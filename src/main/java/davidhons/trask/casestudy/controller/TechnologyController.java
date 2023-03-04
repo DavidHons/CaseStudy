@@ -2,7 +2,6 @@ package davidhons.trask.casestudy.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,12 +22,16 @@ import davidhons.trask.casestudy.service.TechnologyService;
 public class TechnologyController {
 	
 	
-	@Autowired
+	
 	private TechnologyService technologyService;
-	@Autowired
+	
 	private CandidateService candidateService;
 	
-	
+	public TechnologyController(TechnologyService technologyService, CandidateService candidateService)
+	{
+		this.technologyService = technologyService;
+		this.candidateService = candidateService;
+	}
 	
 	@GetMapping(value="/techlist")
 	public List<String> getAllTechnologyNames()

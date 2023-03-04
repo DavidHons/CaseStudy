@@ -3,7 +3,6 @@ package davidhons.trask.casestudy.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import davidhons.trask.casestudy.data.CandidateRepository;
@@ -12,8 +11,13 @@ import davidhons.trask.casestudy.domain.Candidate;
 @Service
 public class CandidateServiceImpl implements CandidateService {
 
-	@Autowired
+	
 	private CandidateRepository data;
+	
+	public CandidateServiceImpl(CandidateRepository data)
+	{
+		this.data = data;
+	}
 	
 	@Override
 	public void addCandidate(Candidate candidate) throws CandidateAlreadyExistsException {

@@ -22,9 +22,13 @@ import davidhons.trask.casestudy.service.CandidateService;
 @RestController
 public class CandidateController {
 
-	@Autowired
+	
 	private CandidateService candidateService;
 	
+	public CandidateController(CandidateService candidateService)
+	{
+		this.candidateService = candidateService;
+	}
 	
 	@GetMapping(value="/candidateList")
 	public List<String> getAllCandidateNames()
